@@ -24,21 +24,16 @@ function Navbar() {
             <div className="dropdown_options">
               <p>Grouping</p>
               <select name="grouping" id="grouping">
-                <option value="none" selected disabled hidden>Status</option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+                <option value="status">Status</option>
+                <option value="user">User</option>
+                <option value="priority">Priority</option>
                </select>
             </div>
             <div className="dropdown_options">
               <p>Ordering</p>
               <select name="ordering" id="ordering">
-                <option value="none" selected disabled hidden>Priority</option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+                <option value="priority">Priority</option>
+                <option value="title">Title</option>
                </select>
             </div>
           </div>
