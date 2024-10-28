@@ -2,3 +2,11 @@
     border: 1px solid black;
     width: fit-content;
 }
+.section_title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.number_count{
+    color: rgb(171, 171, 171);
+}

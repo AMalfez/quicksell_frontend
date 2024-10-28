@@ -10,7 +10,7 @@ function Card() {
             <span>CAM-2</span> <div className='card_user_icon'><div className='status_icon'></div></div>
         </div>
         <div className='card_info'>
-            <LuCircle className='card_email_icon' /> <span>Impliment email notification system</span>
+          <span>Impliment email notification system</span>
         </div>
         <div className='tag'>
             <MdCircle style={{marginRight:"5px"}} /> Feature Request
