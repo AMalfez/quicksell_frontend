@@ -2,20 +2,21 @@ import React from "react";
 import Card from "../card/Card";
 import "./Section.css";
 
-function Section() {
+function Section({title_icon,title,title_count}) {
   return (
     <div className="section_container">
       <div className="section_title">
         <div>
           <span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7 13C10.3137 13 13 10.3137 13 7C13 3.68629 10.3137 1 7 1C3.68629 1 1 3.68629 1 7C1 10.3137 3.68629 13 7 13Z" stroke="#95999F" stroke-width="2" stroke-dasharray="1.4 1.74"/>
-</svg>
+            <img src={title_icon} />
           </span>{" "}
-          <span style={{padding:"0px 5px", fontSize:"15px"}}>No Priority</span> <span className="number_count">2</span>
+          <span style={{ padding: "0px 5px", fontSize: "15px" }}>
+            {title}
+          </span>{" "}
+          <span className="number_count">{title_count}</span>
         </div>
         <div>
-          <span style={{marginRight:"10px"}}>
+          <span style={{ marginRight: "10px" }}>
             <svg
               width="16"
               height="16"
@@ -45,9 +46,9 @@ function Section() {
           </span>
         </div>
       </div>
-      <Card />
-      <Card />
-      <Card />
+      {Array.from({length:title_count}, (_,index) => (
+        <Card key={index} />
+      ))}
     </div>
   );
 }

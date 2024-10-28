@@ -23,6 +23,7 @@
 .navbar_dropdown_container{
     border: 1px solid #e2e2e2;
     top: 51px;
+    z-index: 1000;
     width: 300px;
     left: 35px;
     border-radius: 10px;
