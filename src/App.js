@@ -1,20 +1,15 @@
 import './App.css';
 import Navbar from './components/navbar/Navbar';
-import Section from './components/section/Section';
-
 import { useState } from 'react';
+import SectionMain from './components/section/SectionMain';
+
 function App() {
-  const [showUser, setShowUser] = useState(true);
+  const [group, setGroup] = useState('status');
+  const [order, setOrder] = useState('priority');
   return (
     <div className='main__container'>
-      <Navbar/>
-      <div className='sections'>
-        <Section type={"todo"} title_count={2} showUser={showUser} />
-        <Section type={"done"} title_count={3} showUser={showUser} />
-        <Section type={"backlog"} title_count={3} showUser={showUser} />
-        <Section type={"progress"} title_count={2} showUser={showUser} />
-        <Section type={"cancel"} title_count={0} showUser={showUser} />
-      </div>
+      <Navbar group={group} setGroup={setGroup} order={order} setOrder={setOrder} />
+      <SectionMain group={group}/>
     </div>
   );
 }

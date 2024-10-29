@@ -1,19 +1,19 @@
 import React from "react";
 import Card from "../card/Card";
 import "./Section.css";
-import { SectionTypes } from "../../utils/StatusType";
+import { PriorityTypes } from "../../utils/PriorityTypes";
 
-function Section({type,title_count,showUser}) {
-  const title_data = SectionTypes[type];
+function Section({type,title_count}) {
+  const title_data = PriorityTypes[type];
   return (
     <div className="section_container">
       <div className="section_title">
         <div className="section_title_info">
           <span>
-            {!showUser ? (<img src={title_data.title_icon} />):(<span className='user_icon'><span className='user_status_icon'></span></span>)}
+            <img src={title_data.icon} />
           </span>{" "}
           <span style={{ padding: "0px 10px", fontSize: "15px" }}>
-            {!showUser ? title_data.title_name:"Alfez Mansuri"}
+            {title_data.title}
           </span>{" "}
           <span className="number_count">{title_count}</span>
         </div>
@@ -49,7 +49,7 @@ function Section({type,title_count,showUser}) {
         </div>
       </div>
       {Array.from({length:title_count}, (_,index) => (
-        <Card type={type} key={index} showUser={showUser} />
+        <Card type={"todo"} key={index} showUser={false} showIcon={true} />
       ))}
     </div>
   );

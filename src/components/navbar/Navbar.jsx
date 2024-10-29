@@ -3,8 +3,16 @@ import "./Navbar.css";
 import Display from '../../icons_FEtask/Display.svg'
 import DropDown from '../../icons_FEtask/down.svg'
 
-function Navbar() {
+function Navbar({group, setGroup, order, setOrder}) {
   const [dropDown, setDropDown] = useState(false);
+  const handleGroupChange = (e) =>{
+    setGroup(e.target.value);
+    setDropDown(false);
+  }
+  const handleOrderChange = (e) =>{
+    setOrder(e.target.value);
+    setDropDown(false);
+  }
   const toggleDropdown = () => {
     setDropDown(!dropDown);
   };
@@ -19,7 +27,7 @@ function Navbar() {
           <div className="navbar_dropdown_container">
             <div className="dropdown_options">
               <p>Grouping</p>
-              <select name="grouping" id="grouping">
+              <select name="grouping" id="grouping" value={group} onChange={handleGroupChange}>
                 <option value="status">Status</option>
                 <option value="user">User</option>
                 <option value="priority">Priority</option>
@@ -27,7 +35,7 @@ function Navbar() {
             </div>
             <div className="dropdown_options">
               <p>Ordering</p>
-              <select name="ordering" id="ordering">
+              <select name="ordering" id="ordering" value={order} onChange={handleOrderChange}>
                 <option value="priority">Priority</option>
                 <option value="title">Title</option>
                </select>
