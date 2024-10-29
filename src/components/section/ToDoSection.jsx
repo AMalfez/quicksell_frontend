@@ -1,9 +1,9 @@
 import React from "react";
 import Card from "../card/Card";
 import "./Section.css";
-import { SectionTypes } from "../../utils/StatusType";
+import { SectionMap, SectionTypes } from "../../utils/StatusType";
 
-function Section({type,title_count}) {
+function Section({type,title_count,data}) {
   const title_data = SectionTypes[type];
   return (
     <div className="section_container">
@@ -48,8 +48,8 @@ function Section({type,title_count}) {
           </span>
         </div>
       </div>
-      {Array.from({length:title_count}, (_,index) => (
-        <Card type={type} key={index} showUser={false} showIcon={false} showPriority={true} />
+      {data.map((d,index) => (
+        <Card type={type} data={d} key={index} showUser={false} showIcon={false} showPriority={true} />
       ))}
     </div>
   );

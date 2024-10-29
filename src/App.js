@@ -1,7 +1,8 @@
 import './App.css';
 import Navbar from './components/navbar/Navbar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SectionMain from './components/section/SectionMain';
+import { getDataByStatus } from './actions/actions';
 
 function App() {
   const [group, setGroup] = useState('status');

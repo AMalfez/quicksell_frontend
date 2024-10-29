@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../card/Card";
 import "./Section.css";
 
-function Section({UserData, title_count}) {
+function Section({UserData, title_count, data}) {
   return (
     <div className="section_container">
       <div className="section_title">

@@ -3,7 +3,13 @@ import progress from '../icons_FEtask/in-progress.svg'
 import todo from '../icons_FEtask/To-do.svg'
 import done from '../icons_FEtask/Done.svg'
 import backlog from '../icons_FEtask/Backlog.svg'
-
+export const SectionMap = {
+    "In progress": "progress",
+    "Done": "done",
+    "Todo":"todo",
+    "Cancel":"cancel",
+    "Backlog":"backlog"
+}
 export const SectionTypes = {
     progress:{
         title_name: "In Progress",

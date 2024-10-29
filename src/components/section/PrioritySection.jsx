@@ -2,8 +2,11 @@ import React from "react";
 import Card from "../card/Card";
 import "./Section.css";
 import { PriorityTypes } from "../../utils/PriorityTypes";
+import { SectionMap } from "../../utils/StatusType";
 
-function Section({type,title_count}) {
+function Section({type,title_count,data}) {
+  console.log(type);
+  
   const title_data = PriorityTypes[type];
   return (
     <div className="section_container">
@@ -48,8 +51,8 @@ function Section({type,title_count}) {
           </span>
         </div>
       </div>
-      {Array.from({length:title_count}, (_,index) => (
-        <Card type={"todo"} key={index} showUser={false} showIcon={true} />
+      {data.map((d,index) => (
+        <Card type={SectionMap[d.status]} key={index} showUser={false} showPriority={false} showIcon={true} data={d} />
       ))}
     </div>
   );

@@ -1,39 +1,83 @@
-import React from 'react'
-import './Section.css'
-import ToDoSection from './ToDoSection';
-import UserSection from './UserSections'
-import PrioritySection from './PrioritySection'
-function SectionMain({group,order}) {
-    if(group==='status'){
-        return (
-            <div className='sections'>
-                <ToDoSection type={"todo"} title_count={2} />
-                <ToDoSection type={"done"} title_count={3} />
-                <ToDoSection type={"backlog"} title_count={3} />
-                <ToDoSection type={"progress"} title_count={2} />
-                <ToDoSection type={"cancel"} title_count={0} />
-            </div>
-          )
-    } else if(group === 'user'){
-        return (
-            <div className='sections'>
-                <UserSection title_count={2} />
-                <UserSection title_count={3} />
-                <UserSection title_count={3} />
-                <UserSection title_count={2} />
-                <UserSection title_count={0} />
-            </div>
-          )
+import React, { useState, useEffect } from "react";
+import "./Section.css";
+import ToDoSection from "./ToDoSection";
+import UserSection from "./UserSections";
+import PrioritySection from "./PrioritySection";
+import {
+  getDataByPriority,
+  getDataByStatus,
+  getDataByUser,
+} from "../../actions/actions";
+
+function SectionMain({ group, order }) {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    console.log("ran");
+    getData();
+  }, [group, order]);
+  const getData = async () => {
+    try {
+      setLoading(true);
+      let data;
+      if (group === "status") {
+        data = await getDataByStatus();
+      } else if (group === "user") {
+        data = await getDataByUser();
+      } else {
+        data = await getDataByPriority();
+      }
+      setData(data);
+      console.log(data);
+    } catch (error) {
+      alert(error);
     }
-  return (
-    <div className='sections'>
-        <PrioritySection type={"no"} title_count={2} />
-        <PrioritySection type={"urgent"} title_count={2} />
-        <PrioritySection type={"high"} title_count={3} />
-        <PrioritySection type={"medium"} title_count={3} />
-        <PrioritySection type={"low"} title_count={2} />
-    </div>
-  )
+    setLoading(false);
+  };
+  if (loading) {
+    return (<div className="sections">Loading...</div>);
+  }
+  if (group === "status") {
+    return (
+      <div className="sections">
+        {Object.entries(data).map((entry) => (
+          <ToDoSection
+            key={entry[0]}
+            type={entry[0]}
+            title_count={entry[1].length}
+            data={entry[1]}
+          />
+        ))}
+      </div>
+    );
+  }
+  if (group === "user") {
+    return (
+      <div className="sections">
+        {data.map((d) => (
+          <UserSection
+            title_count={d.tickets.length}
+            user={d.user}
+            data={d.tickets}
+          />
+        ))}
+      </div>
+    );
+  }
+  if (group === "prioirity") {
+    return (
+      <div className="sections">
+        {Object.entries(data).map((entry) => (
+          <PrioritySection
+            type={entry[0]}
+            key={entry[0]}
+            title_count={entry[1].length}
+            data={entry[1]}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
-export default SectionMain
+export default SectionMain;
