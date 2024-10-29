@@ -1,3 +1,7 @@
+## Kanban DashBoard
+
+<img width="960" alt="photo_quicksell" src="https://github.com/user-attachments/assets/505cdf47-ed20-4831-bea8-3ee2bc51dd2c">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
