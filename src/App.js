@@ -1,23 +1,19 @@
 import './App.css';
 import Navbar from './components/navbar/Navbar';
 import Section from './components/section/Section';
-import todo from './icons_FEtask/To-do.svg'
-import done from './icons_FEtask/Done.svg'
-import progress from './icons_FEtask/in-progress.svg'
-import cancel from './icons_FEtask/Cancelled.svg'
+
+import { useState } from 'react';
 function App() {
+  const [showUser, setShowUser] = useState(true);
   return (
     <div className='main__container'>
       <Navbar/>
       <div className='sections'>
-        <Section title={"To-Do"} title_count={2} title_icon={todo} />
-        <Section title={"Done"} title_count={3} title_icon={done} />
-        <Section title={"Done"} title_count={3} title_icon={done} />
-        <Section title={"Done"} title_count={3} title_icon={done} />
-        <Section title={"In Progress"} title_count={1} title_icon={progress} />
-        <Section title_icon={cancel} title={"Cancel"} title_count={0} />
-        <Section title_icon={cancel} title={"Cancel"} title_count={0} />
-        <Section title_icon={cancel} title={"Cancel"} title_count={0} />
+        <Section type={"todo"} title_count={2} showUser={showUser} />
+        <Section type={"done"} title_count={3} showUser={showUser} />
+        <Section type={"backlog"} title_count={3} showUser={showUser} />
+        <Section type={"progress"} title_count={2} showUser={showUser} />
+        <Section type={"cancel"} title_count={0} showUser={showUser} />
       </div>
     </div>
   );

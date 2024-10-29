@@ -13,3 +13,7 @@
 .number_count{
     color: rgb(171, 171, 171);
 }
+.section_title_info{
+    display: flex;
+    align-items: center;
+}

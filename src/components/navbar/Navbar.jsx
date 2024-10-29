@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { HiAdjustmentsHorizontal } from "react-icons/hi2";
-import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
+import Display from '../../icons_FEtask/Display.svg'
+import DropDown from '../../icons_FEtask/down.svg'
 
 function Navbar() {
   const [dropDown, setDropDown] = useState(false);
@@ -11,13 +11,9 @@ function Navbar() {
   return (
     <div className="navbar_container">
       <div className="navbar_display_btn" onClick={toggleDropdown}>
-        <HiAdjustmentsHorizontal />
+        <img src={Display} alt="display" />
         <div className="navbar_display_btn_txt">Display</div>
-        {!dropDown ? (
-          <RiArrowDropDownLine className="dropdown_down" />
-        ) : (
-          <RiArrowDropUpLine className="dropdown_up" />
-        )}
+        <img src={DropDown} alt="drop-down" />
       </div>
       {dropDown && (
           <div className="navbar_dropdown_container">
